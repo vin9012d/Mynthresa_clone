@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 80%;
+            margin: auto;
+        }
+        #addressContainer{
+            display: flex;
+        }
+        #addressContainer form{
+            margin-left: 100px;
+            font-size: 25px;
+        }
+        #addressContainer input,select{
+            margin-top: 10px;
+            font-size: 22px;
+            width: 350px;
+            box-sizing: border-box;
+        }
+        #addressContainer input:last-child{
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="addressContainer">
+        <div>
+            <h2>MY ACCOUNT</h2>
+            <p>my overview</p>
+            <p>my account information</p>
+            <p>my address book</p>
+            <p>my orders </p>
+            <p>my gift certificated</p>
+            <p>my wishlist</p>
+        </div>
+    <form id="addressForm">
+       <select name="" id="">
+           <option value="">academic title</option>
+           <option value="dr">Dr</option>
+           <option value="prof">Prof</option>
+       </select><br>
+     <input type="text" id="fname" placeholder="first name"><br>
+     <input type="text" id="lname" placeholder="last name"><br>
+     <input type="text" id="company" placeholder="company"><br>
+     <input type="text" id="mobile" placeholder="mobile number"><br>
+     <input type="text" id="FAX" placeholder="FAX"><br>
+     <input type="text" id="city" placeholder="city"><br>
+     <input type="text" id="strret" placeholder="street adress"><br>
+     <input type="text" id="pin" placeholder="PIN"><br>
+     <input type="text" id="state" placeholder="state"><br>
+     <input type="text" id="provience" placeholder="state/provience"><br>
+     <input type="text" id="country" placeholder="country"><br>
+     <p>* required fields</p>
+     <p><strong>Default Billing Address</strong></p>
+     <p><strong>Default Shiping Address</strong></p>
+     <input type="submit" id="" value=" SAVE ADDRESS">
+    </form>
+    </div>
+</body>
+<script>
+  var form=  document.querySelector("#addressForm");
+  document.querySelector("#addressForm").addEventListener("submit",adressSave);
+  function adressSave(){
+      event.preventDefault();
+      let fname=form.fname.value;
+      let lname=form.lname.value;
+      let company=form.company.value;
+      let mobile=form.mobile.value;
+    //   let fax=form.FAX.value;
+      let city=form.city.value;
+      let pin=form.pin.value;
+      let state=form.state.value;
+      let country=form.country.value;
+
+  
+
+let addressData={
+    FirstName:fname,
+    LastName:lname,
+    Company:company,
+    Mobile:mobile,
+    // Fax:fax,
+    City:city,
+    Pin:pin,
+    State:state,
+    Country:country,
+
+}
+   localStorage.setItem("adressDatas",JSON.stringify(addressData))
+   alert("Your address is succesfully saved redirected to the cart")
+   window.location.href="index.html"
+  }
+
+</script>
+</html>

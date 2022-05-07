@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main{
+            display: flex;
+        }
+        #main form{
+            padding: 0px 100px 0px 100px;
+
+        }
+        #createAccount{
+            border-right: 1px solid black;
+        }
+        #createAccount input,select{
+            width: 520px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        #createAccount>input:last-child{
+            width: 200px;
+        }
+        #createAccount>input:nth-child(15){
+            width: 15px;
+        }
+        #login input{
+            width: 520px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        #login>input:nth-child(9){
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+    <form id="createAccount">
+        <h2>CREATE AN ACCOUNT</h2>
+        <p>Please enter the following information to create your account.</p>
+      <select name="" id="academicTitle">
+          <option value="">academic title</option>
+          <option value="">Dr</option>
+          <option value="">Prof</option>
+      </select><br>
+        <input type="text" id="fname" placeholder="first name *"><br>
+        <input type="text" id="lname" placeholder="last name *"><br>
+        <input type="text" id="email" placeholder="email address *"><br>
+        <input type="text" id="pwd" placeholder="password *"><br>
+        <input type="text" id="cpwd" placeholder="confirm password *"><br>
+        <input type="checkbox" id="checkBox"><label>From now on I will receive the Mytheresa Newsletter with selected fashion offers. If I do not wish to receive the newsletter, I can unsubscribe at any time free of charge at privacy@mytheresa.com.</label>
+        <p>I agree that Mytheresa may insert analytical web beacons into the newsletter and create a personalized user profile based on my purchase and usage behavior, including sending a notification when I have placed something in the shopping cart. Further details can be found in our Privacy Policy, clause 5. I understand that I can revoke my consent at any time by emailing privacy@mytheresa.com.</p>
+        <p>* required fields</p>
+        <input type="submit" value="REGISTER">
+    </form>
+    <form id="login">
+        <h2>ALREADY REGISTERED?</h2>
+        <p>If you have an account with us, please log in.
+
+        </p>
+        <input type="text" id="logemail" placeholder="email address *"><br>
+        <input type="text" id="logpwd" placeholder="password *"><br>
+        <p>* required fields</p>
+        <p>Forgot your password?</p>
+        <input type="submit" value="LOG IN">
+        <p>At Mytheresa, we keep your information secure. As a result, it will be necessary for you to log in to your account before you are able to place an order or change the information on your account. You will be asked to log in to complete your order even if you have already been greeted on the website</p>
+    </form>
+    </div>
+   <hr>
+</body>
+<script>
+    var accountData=JSON.parse(localStorage.getItem("accountDatas")) || []
+    var account=document.querySelector("#createAccount")
+    var accounts=document.querySelector("#login")
+    document.querySelector("#createAccount").addEventListener("submit", createAccountFun);
+    document.querySelector("#login").addEventListener("submit", loginFun);
+
+    function createAccountFun(){
+        event.preventDefault();
+         let userFName=account.fname.value;
+         let userLName=account.lname.value;
+         let userMail=account.email.value;
+         let userPwd=account.pwd.value;
+         console.log(userPwd)
+         let userCPwd=account.cpwd.value;
+         let userChecked=account.checkBox.checked;
+         let userData={
+             fname:userFName,
+             lname:userLName,
+             mail:userMail,
+             pwd:userPwd,
+             cpwd:userCPwd
+
+         }
+         if(userFName!="" && userLName!="" && userMail!="" &&  userPwd!="" &&  userCPwd!="" &&  userChecked !=false ){
+            
+          let filtered=   accountData.filter(function(ele){
+                 return ele.mail == userMail;
+             })
+             if(userCPwd!=userPwd){
+                 alert("confirm password is not matchng with password")
+             }
+         else if(filtered.length>0){
+              alert("Allready registered")
+          }
+          else{
+            alert("you are sucessfully registered")
+            accountData.push(userData)
+            localStorage.setItem("accountDatas", JSON.stringify(accountData)); 
+            window.location.href="address.html"
+          }
+          
+         }
+         else{
+             alert("some data is missing")
+         }
+    }
+
+    function loginFun(){
+        event.preventDefault();
+        let userMail=accounts.logemail.value;
+         let userPwd=accounts.logpwd.value;
+         let filtered=   accountData.filter(function(ele){
+                 return ele.mail == userMail;  
+             })
+             if(filtered.length>0){
+                if(filtered[0].pwd!=userPwd){
+                    alert("Invalid password")
+                }
+                else{
+                    alert("Logged in sucessfully")
+                    window.location.href="index.html"
+                }
+             }
+             else{
+                 alert("No user found")
+             }
+    
+    }
+</script>
+</html>

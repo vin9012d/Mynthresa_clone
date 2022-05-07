@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="common.css">
+
+   
+    <script
+    src="https://kit.fontawesome.com/24c494a6b6.js"
+crossorigin="anonymous"
+> </script>
+    <style>
+#cart>div{
+    display: flex;
+    justify-content: space-between;
+    
+}
+#cart>div>div:nth-child(2){
+    display: flex;
+    width: 20%;
+    justify-content: space-around;
+    align-items: center;
+}
+#cart>div>div:nth-child(1){
+    display: flex;
+    width: 20%;
+    justify-content: space-around;
+    align-items: center;
+}
+#cart input{
+    height: 50px;
+    width: 50px;
+}
+#cart img{
+    height: 150px;
+    width: 150px;
+}
+#promo{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.up{
+    margin-top: 20px;
+}
+#promo >div>form>input:nth-child(1){
+width: 300px;
+height: 24px;
+}
+#promo >div>form>input:nth-child(2){
+width: 120px;
+height: 30px;
+}
+#promo>div:nth-child(2){
+    text-align: end;
+}
+#contact{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#contact>div{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    
+}
+#contact>div>div{
+    width: 35%;
+    border: solid 1px black;
+    margin-right: 10px;
+    text-align: center;
+}
+form+button{
+    margin-top: 60px;
+    margin-bottom: 30px;
+  
+}
+#heading{
+    display: flex;
+    justify-content: end;
+}
+#heading>p{
+    margin-left: 15px;
+    margin-right: 15px;
+    font-weight: bolder;
+}
+button{
+    border: none;
+}
+
+#contact>div>div>p,h2{
+    padding: 10px;
+}
+.lastbutton{
+    margin-top: 25px;
+    margin-bottom: 25px;
+            display: flex;
+            /* padding: 60px; */
+            justify-content: space-between;
+        }
+        button{
+            background-color: #f2f2f2;
+            color: black;
+            border: none;
+            padding: 10px 50px 10px 50px;
+        }
+        #black{
+            background-color: black;
+            color: white;
+        }
+        #end{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        #bogo{
+            display: flex;
+            justify-content: center;
+            margin: auto;
+        }
+        #bogo img{
+            width: 50%;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div id="navbarCategory">
+            <div> <a href="womens.html">WOMEN</a> </div>
+            <div> <a href="mens.html">MEN</a> </div>
+            <div> <a href="kids.html">KIDS</a> </div>
+        
+        </div>
+        <div id="navbarUser">
+            <div> <a href="newsSignup.html">Signup for Newsletters</a> </div>
+            <div> <a href="myAccount.html">My account</a> </div>
+            <div> <a href="myWishlist.html">My wishlist</a> </div>
+            <div> <a href="language.html">International | English</a> </div>
+           
+        </div>
+    </div>
+    <div id="bogo">
+        <div> <img src="https://www.mytheresa.com/skin/frontend/mytheresa/default/images/logo.png?v=20220420T172422" alt="logo">
+        </div>
+      
+    </div>
+    <div id="category">
+        <div id="item">
+            <div id="newArrivals">NEW ARRIVALS</div>
+            <div id="designers">DESIGNERS</div>
+            <div id="clothing">CLOTHING</div>
+            <div id="shoes" >SHOES</div>
+            <div id="bags" >BAGS</div>
+            <div id="accessories" >ACCESSORIES</div>
+            <div id="jewellery" >JEWELERY</div>
+            <div id="vacation" >VACATION</div>
+            <div id="sale" >SALE</div>
+        </div>
+        <div id="search">
+            <input type="text" placeholder="search for">
+            <span><i class="fa-solid fa-magnifying-glass"></i></span>
+        </div>
+    </div>
+    <div id="call"> <span> <i class="fa-solid fa-square-phone"></i> </span></div>
+  
+    <hr>
+    <p id="notification">For a short time only: free shipping on all orders</p>
+    
+    <div id="heading">
+        <p>Price</p>
+        <p>Quantity</p>
+        <p>Sub Total</p>
+    </div>
+    <hr>
+    <div id="cart">
+
+    </div>
+    <p class="up">YOUR CURRENT PROMOTIONS</p>
+    <P >Free Shipping</P>
+    <hr>
+    <div id="promo">
+        <div>
+            <form action="" id="form">
+                <input type="text" id="wcode" placeholder="Gift card Store/ Credit/Promo code">
+                <input type="submit" value="USE CODE">
+            </form>
+          
+        </div>
+        <div>
+            <label for="">Sub Total</label> <label id="subTotal"></label><br>
+            <label for="">Grand Total</label> <label id="grandTotal"></label><br>
+            <p>VAT exception. VAT not included. Shipping not included.</p>
+          
+            
+        </div>
+    </div>
+    <div class="lastbutton">
+        <button onclick="funcBack()">CONTINUE SHOPPING</button>
+        <button onclick="funcahead()" id="black">PROCEED TO CHECKOUT</button>
+    </div>
+    <hr>
+    <div id="contact">
+        <h2>You can also place your order via telephone.</h2>
+        <div>
+            <div>
+        <h2><span><i class="fa-solid fa-phone-flip"></i></span></h2>
+        <p>CALL US</p>
+        <p>+91*789789789</p>
+        <p>AVAILABLE 24/7</p>
+            </div>
+            <div>
+                <h2><span><i class="fa-solid fa-envelope"></i></span></h2>
+                <p>customercare@mythresa.com</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div id="end">
+    <div>
+        <label for="">terms of use   privacy  policy   imprinit</label>
+    </div>
+    <div>
+      copyright © 2006-2022 mytheresa.com
+    </div>
+</div>
+</body>
+<script>
+       var cartData=JSON.parse(localStorage.getItem("cartDatas"));
+    displayData(cartData)
+
+    function displayData(cartData){
+        document.querySelector("#cart").innerHTML=null;
+        cartData.forEach(function(ele){
+            var box=document.createElement("div");
+            var boxA=document.createElement("div");
+            var boxB=document.createElement("div");
+            var box1=document.createElement("div");
+            var box2=document.createElement("div");
+            var image=document.createElement("img");
+            image.setAttribute("src",ele.img_url);
+            var name=document.createElement("p");
+            name.innerText=ele.name;
+            var remove=document.createElement("p");
+            remove.innerText="X remove";
+            remove.addEventListener("click",function(){
+                deleteRow(ele)
+            })
+          var price=document.createElement("p");
+          price.innerText=ele.price;
+          var quantity=document.createElement("input");
+             quantity.value=ele.quantity;
+            quantity.style.textAlign="center"
+            // console.log(quantity.value)
+            quantity.addEventListener("change",function(){
+                quantityChange(ele)
+            })
+          var subTotal=document.createElement("p");
+          subTotal.innerText=(ele.price)*(quantity.value);
+          let line=document.createElement("hr")
+            box1.append(image);
+            box2.append(name,remove)
+            boxA.append(box1,box2);
+            boxB.append(price,quantity,subTotal)
+            // console.log(boxB)
+            box.append(boxA,boxB);
+
+            document.querySelector("#cart").append(box,line)
+        })
+        }
+
+        function deleteRow(ele){
+            var name=ele.name;
+            console.log(name)
+           cartData=  cartData.filter(function(element){
+                 return element.name!=name;
+            })
+            localStorage.setItem("cartDatas",JSON.stringify(cartData));
+            displayData(cartData)
+        }
+
+        function quantityChange(ele){
+           var x=event.target.value;
+           ele.quantity=x;
+           localStorage.setItem("cartDatas",JSON.stringify(cartData));
+           displayData(cartData)
+           displayTotal();
+        }
+        displayTotal();
+        function     displayTotal(){
+         let ans=  cartData.reduce(function(acc,ele){
+                   return acc+((ele.price)*(ele.quantity))
+            },0)
+            console.log(ans)
+            document.querySelector("#subTotal").innerText=ans;
+            document.querySelector("#grandTotal").innerText=ans;
+        }
+        var form=document.querySelector("#form");
+        document.querySelector("#form").addEventListener("submit",funcpromo);
+
+        function funcpromo(){
+            event.preventDefault();
+          let old=  document.querySelector("#grandTotal").innerText;
+            
+            var code=(form.wcode.value);
+           if(code=="masai30"){
+             old=(old*70)/100;
+             document.querySelector("#grandTotal").innerText=old;
+           }
+           else{
+               alert("Wrong promo code entered")
+           }
+        }
+        function funcBack(){
+            window.location.href="newarrivals.html"
+        }
+        function funcahead(){
+            window.location.href="delivery.html"
+        }
+</script>
+</html>

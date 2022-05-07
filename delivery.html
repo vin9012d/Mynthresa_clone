@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 90%;
+            margin: auto;
+        }
+        #addMain{
+            display: flex;
+        }
+        #add1{
+            border-right: 1px solid black;
+        }
+        #addMain>div{
+            width: 50%;
+            margin: auto;
+            padding: 0px 60px 0px 60px; 
+        }
+        #addMain img{
+            width: 50%;
+        }
+        #packaging{
+            display: flex;
+            justify-content: space-between;
+        }
+        .delivery{
+            display: flex;
+            justify-content: space-between;
+        }
+        .lastbutton{
+            display: flex;
+            padding: 60px;
+            justify-content: space-between;
+        }
+        button{
+            background-color: #f2f2f2;
+            color: black;
+            border: none;
+            padding: 10px 50px 10px 50px;
+        }
+        #black{
+            background-color: black;
+            color: white;
+        }
+        #bogo{
+            display: flex;
+            justify-content: center;
+            margin: auto;
+            margin-bottom: 50px;
+            margin-top: 50px;
+        }
+        #bogo img{
+            width: 50%;
+        }
+        #contact{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#contact>div{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    
+}
+#contact>div>div{
+    width: 35%;
+    border: solid 1px black;
+    margin-right: 10px;
+    text-align: center;
+}
+#end{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+  
+    </style>
+
+</head>
+<body>
+    <div id="bogo">
+        <div> <img src="https://www.mytheresa.com/skin/frontend/mytheresa/default/images/logo.png?v=20220420T172422" alt="logo">
+        </div>
+        </div>
+
+    <div id="addMain">
+        <div id="add1">
+<p >SHIPPING ADDRESS</p>
+<p>Please select your preferred shipping address. To use a different shipping address, please click "add shipping address" below.</p>
+<div>
+    <p>BILLING ADRESS</p>
+     <p id="userNamea"></p>
+     <p id="userCitya"></p>
+     <p id="userPina"></p>
+     <p id="userCountrya"></p>
+ 
+ </div>
+ <button onclick="funcAdd()">ADD SHIPPING ADDRESS</button>
+ <p>BILLING ADDRESS</p>
+ <p>If your billing address differs from your shipping address, please click "add billing address".</p>
+      
+        <button onclick="funcAdd()">ADD BILLING ADDRESS</button><br>
+       
+    </div>
+        <div id="add2">
+<p>SHIPPING METHOD</p>
+<p>Please select your preferred shipping method.</p>
+<hr>
+<div>
+<input type="radio" checked><label for=""><strong>Express</strong></label>
+
+<div class="delivery">
+<p>2-4 business days delivery time</p>
+<p>€ 0.00</p>
+</div>
+<hr>
+<p>PACKAGING OPTIONs</p>
+<div id="packaging">
+    <div>
+        <input type="radio" name="ravi"><label>Mytheresa packaging</label>
+        <p>Free</p>
+        <img src="https://www.mytheresa.com/skin/frontend/mytheresa/default/images/package/package_mytheresa_2x.jpg" alt="">
+    </div>
+    <div>
+        <input type="radio" name="ravi"><label>Eco packaging</label>
+        <p>Free</p>
+        <img src="https://www.mytheresa.com/skin/frontend/mytheresa/default/images/package/package_brown_2x.jpg" alt="">
+    </div>
+</div>
+    <hr>
+    <p>CLIMATE NEUTRAL OPTION</p>
+    <div class="delivery">
+        <div>
+    <input type="checkbox" id="environment"><label for="">Help offset the carbon emissions of your order</label>
+</div>
+    <p>€ 0.40</p>
+</div>
+
+</div>
+    
+    </div>
+    </div>
+    <div class="lastbutton">
+        <button onclick="funcBack()">BACK TO SHOPPING BAG</button>
+        <button onclick="funcahead()" id="black">PROCEED TO CHECKOUT</button>
+    </div>
+    <hr>
+    <div id="contact">
+        <h2>You can also place your order via telephone.</h2>
+        <div>
+            <div>
+        <h2><span><i class="fa-solid fa-phone-flip"></i></span></h2>
+        <p>CALL US</p>
+        <p>+91*789789789</p>
+        <p>AVAILABLE 24/7</p>
+            </div>
+            <div>
+                <h2><span><i class="fa-solid fa-envelope"></i></span></h2>
+                <p>customercare@mythresa.com</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div id="end">
+    <div>
+        <label for="">terms of use   privacy  policy   imprinit</label>
+    </div>
+    <div>
+      copyright © 2006-2022 mytheresa.com
+    </div>
+</div>
+</body>
+<script>
+        var Address=JSON.parse(localStorage.getItem("adressDatas"));
+    displayAboveData(Address);
+    function   displayAboveData(Address){
+        // document.querySelector("#userName").innerText=Address.FirstName+Address.LastName;
+        document.querySelector("#userNamea").innerText=Address.FirstName+Address.LastName;
+        // document.querySelector("#userCity").innerText=Address.City;
+        document.querySelector("#userCitya").innerText=Address.City;
+        // document.querySelector("#userPin").innerText=Address.Pin;
+        document.querySelector("#userPina").innerText=Address.Pin;
+        // document.querySelector("#userCountry").innerText=Address.Country;
+        document.querySelector("#userCountrya").innerText=Address.Country;
+
+    }
+    function funcAdd(){
+  
+        window.location.href="address.html"
+    }
+
+    function funcahead(){
+        let ans=document.querySelector("#environment").checked;
+        let environment={
+            data:0.40
+        }
+        if(ans==true){
+            let environment={
+            data:0.40
+        }
+            localStorage.setItem("environments",JSON.stringify(environment))
+        }
+        else{
+            let environment={
+            data:0.00
+        }
+            localStorage.setItem("environments",JSON.stringify(environment))
+
+        }
+
+        window.location.href="payment.html"
+    }
+    function funcBack(){
+        window.location.href="cart.html"
+    }
+</script>
+</html>

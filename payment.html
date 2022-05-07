@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+    src="https://kit.fontawesome.com/24c494a6b6.js"
+crossorigin="anonymous"
+> </script>
+<style>
+    body{
+        width: 90%;
+        margin: auto;
+    }
+    button{
+        padding: 10px 30px 10px 30px;
+        border: none;
+    }
+    #back{
+        background-color: #f2f2f2;
+     
+    }
+    #black{
+        background-color: black;
+        color: white;
+    }
+    #buttons{
+        display: flex;
+        justify-content: space-between;
+    }
+    #buttons>div{
+    width: 30%;
+    /* border: solid 1px black; */
+    }
+    #buttons>div:nth-child(2){
+        text-align: end;
+    }
+    /* #form{
+        display: none;
+    } */
+    .cart{
+        display: flex;
+        justify-content: space-between;
+    }
+    #form>input:nth-child(3){
+        width: 400px;
+        font-size: 22px;
+        /* height: 200px; */
+        margin: 10px 0px 10px 0px;
+        
+    }
+    #form>input:nth-child(7){
+        width: 400px;
+        font-size: 22px;
+        /* height: 200px; */
+        margin: 10px 0px 10px 0px;
+    }
+    #expiray{
+        display: flex;
+    }
+    #expiray input{
+        width: 100px;
+        font-size: 22px;
+        margin: 10px 0px 10px 0px;
+    }
+    #expiray>div:nth-child(2){
+        margin-left: 10px;
+    }
+    input+label{
+        margin-left: 10px;
+    }
+    #bogo{
+            display: flex;
+            justify-content: center;
+            margin: auto;
+            margin-bottom: 50px;
+            margin-top: 50px;
+        }
+        #bogo img{
+            width: 50%;
+        }
+        #contact{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#contact>div{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    
+}
+#contact>div>div{
+    width: 35%;
+    border: solid 1px black;
+    margin-right: 10px;
+    text-align: center;
+}
+#end{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+</style>
+</head>
+<body>
+    <div id="bogo">
+        <div> <img src="https://www.mytheresa.com/skin/frontend/mytheresa/default/images/logo.png?v=20220420T172422" alt="logo">
+        </div>
+        </div>
+  
+    <p>PAYMENT METHOD</p>
+    <p>Please select your preferred payment method for this order.</p>
+    <hr>
+    <div class="cart">
+    <div>
+    <input type="radio" onclick="funcCheck()" id="card" name="payment"><span><i class="fa-solid fa-credit-card"></i></span><strong>Card</strong>
+    <p>Immediate Shipping</p>
+    </div>
+   
+        <form  id="form" action="">
+           <label for="">Name on card*</label><br>
+           <input type="text"><br>
+           <label for="">Credit Card Number*</label><br>
+           <input type="text" placeholder="1111 2222 3333 4444"><br>
+           <div id="expiray">     <div><label for=""> Expiration date*</label><br>
+        <input type="text" placeholder="MM/YY">
+    </div>
+    
+            <div><label for=""> CVC/CVV*</label><br>
+            <input type="text" placeholder="123"><label>What is this?</label>
+    </div>
+</div>
+
+           <p>* required fields</p>
+
+        </form>
+    </div>
+</div>
+    <hr>
+    <input type="radio" onclick="funcCheck()" id="paypal" checked name="payment"><span><i class="fa-brands fa-cc-paypal"></i></span><strong>Paypal</strong>
+    <p>shipping upon receipt of payment</p>
+
+    <div id="buttons">
+        <div>
+        <button id="back"  onclick="funcback()">BACK TO DELIVERY</button><br>
+        <p>Please note: By clicking this button, all data listed on this page will be erased for security reasons.</p>
+    </div>
+    <div>        <button id="black" onclick="funcPayment()">PROCEED TO CHECKOUT</button>
+    </div>
+
+    </div>
+    <hr>
+    <div id="contact">
+        <h2>You can also place your order via telephone.</h2>
+        <div>
+            <div>
+        <h2><span><i class="fa-solid fa-phone-flip"></i></span></h2>
+        <p>CALL US</p>
+        <p>+91*789789789</p>
+        <p>AVAILABLE 24/7</p>
+            </div>
+            <div>
+                <h2><span><i class="fa-solid fa-envelope"></i></span></h2>
+                <p>customercare@mythresa.com</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div id="end">
+    <div>
+        <label for="">terms of use   privacy  policy   imprinit</label>
+    </div>
+    <div>
+      copyright © 2006-2022 mytheresa.com
+    </div>
+</div>
+
+</body>
+<script>
+    function funcPayment(){
+        var ans= document.querySelector("#card").checked;
+        if(ans==false){
+            let paymentMethod={method:"PayPal"}
+            localStorage.setItem("paymentMethods",JSON.stringify(paymentMethod))
+        }
+        else{
+            let paymentMethod={method:"card"}
+            localStorage.setItem("paymentMethods",JSON.stringify(paymentMethod))
+        }
+
+        window.location.href="finalcart.html"
+    }
+    function funcback(){
+        window.location.href="delivery.html"  
+    }
+    function funcCheck(){
+       var ans= document.querySelector("#card").checked;
+       if(ans==true){
+           document.querySelector("#form").style.display="block";
+       }
+       else{
+        document.querySelector("#form").style.display="none";
+       }
+    }
+</script>
+</html>
