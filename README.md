@@ -24,7 +24,7 @@
 - Font-awesome
 
 ## Site Made by Us
-https://quiet-marzipan-8a0d28.netlify.app/
+https://mynthresaclone.netlify.app/
 
 ## Copy this link to clone the Github Repository
 https://github.com/vin9012d/PROJECT-UNIT-2
